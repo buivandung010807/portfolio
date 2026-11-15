@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Bùi Văn Dũng · Portfolio Công nghệ số</title>
+    <meta name="description"
+        content="Portfolio học phần Nhập môn Công nghệ số và ứng dụng AI của Bùi Văn Dũng, sinh viên Sư phạm Âm nhạc.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #eceff4;
+            --sf: #fff;
+            --s2: #e2e8f1;
+            --ink: #0f1a2e;
+            --mut: #4d5a72;
+            --ln: #cfd7e4;
+            --ac: #b45f06;
+            --c2: #0b7aa6;
+            --on: #fff;
+            --hd: rgba(236, 239, 244, .9);
+            --hf: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media(prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --bg: #0e131c;
+                --sf: #161d2a;
+                --s2: #1d2636;
+                --ink: #e9edf5;
+                --mut: #9aa6bc;
+                --ln: #2b3548;
+                --ac: #f2a93b;
+                --c2: #4cc3ee;
+                --on: #1a1203;
+                --hd: rgba(14, 19, 28, .9)
+            }
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #0e131c;
+            --sf: #161d2a;
+            --s2: #1d2636;
+            --ink: #e9edf5;
+            --mut: #9aa6bc;
+            --ln: #2b3548;
+            --ac: #f2a93b;
+            --c2: #4cc3ee;
+            --on: #1a1203;
+            --hd: rgba(14, 19, 28, .9)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit
+        }
+
+        [hidden] {
+            display: none !important
+        }
+
+        html {
+            scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 76px);
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 400 16px/1.7 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            -webkit-font-smoothing: antialiased
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0 0 auto;
+            height: env(safe-area-inset-top, 0px);
+            background: var(--hd);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 10
+        }
+
+        a {
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--c2);
+            outline-offset: 3px;
+            border-radius: 4px
+        }
+
+        .wrap {
+            width: min(1080px, 100% - 40px);
+            margin-inline: auto
+        }
+
+        /* header */
+        header {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 20;
+            background: var(--hd);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--ln)
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 64px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font: 800 26px/1 var(--hf);
+            text-decoration: none;
+            letter-spacing: .01em;
+            margin-right: auto
+        }
+
+        .brand svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--ac)
+        }
+
+        nav ul {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .nl {
+            display: block;
+            padding: 10px 14px;
+            border: 0;
+            border-radius: 6px;
+            background: none;
+            color: var(--mut);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.2;
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        .nl:hover {
+            color: var(--ink);
+            background: var(--s2)
+        }
+
+        .nl[aria-current="page"] {
+            color: var(--ink);
+            box-shadow: inset 0 -2px var(--ac)
+        }
+
+        .dd {
+            position: relative
+        }
+
+        .dm {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 340px;
+            padding: 8px;
+            margin: 0;
+            list-style: none;
+            background: var(--sf);
+            border: 1px solid var(--ln);
+            border-radius: 10px;
+            box-shadow: 0 18px 40px -12px rgba(0, 0, 0, .4);
+            display: none;
+            flex-direction: column
+        }
+
+        .dd.open .dm {
+            display: flex
+        }
+
+        @media(hover:hover) {
+            .dd:hover .dm {
+                display: flex
+            }
+        }
+
+        .dm a {
+            display: flex;
+            gap: 12px;
+            padding: 9px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.45
+        }
+
+        .dm a:hover {
+            background: var(--s2)
+        }
+
+        .dm b {
+            font: 800 18px/1.3 var(--hf);
+            color: var(--ac);
+            min-width: 1.1em;
+            text-align: center
+        }
+
+        .ic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--ln);
+            background: var(--sf);
+            color: var(--ink);
+            font-size: 16px;
+            cursor: pointer;
+            display: grid;
+            place-items: center
+        }
+
+        .ic:hover {
+            border-color: var(--ac)
+        }
+
+        .burger {
+            display: none
+        }
+
+        /* hero */
+        .hero {
+            position: relative;
+            padding: 72px 0 64px;
+            overflow: hidden
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, var(--ln) 0 1px, transparent 1px 18px, var(--ln) 18px 19px, transparent 19px 36px, var(--ln) 36px 37px, transparent 37px 54px, var(--ln) 54px 55px, transparent 55px 72px, var(--ln) 72px 73px, transparent 73px 120px) 0 0/100% 120px;
+            opacity: .5;
+            -webkit-mask: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+            mask: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent)
+        }
+
+        .hg {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 48px;
+            align-items: center
+        }
+
+        .tag {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 7px 14px;
+            border: 1px solid var(--ln);
+            background: var(--sf);
+            border-radius: 999px;
+            font-size: 13.5px;
+            color: var(--mut)
+        }
+
+        h1 {
+            font: 800 clamp(46px, 8.2vw, 96px)/.92 var(--hf);
+            margin: 22px 0 18px;
+            letter-spacing: -.005em
+        }
+
+        h1 small {
+            display: block;
+            font: 600 clamp(20px, 3vw, 30px)/1.2 var(--hf);
+            color: var(--mut);
+            margin-bottom: 10px;
+            letter-spacing: .02em
+        }
+
+        .lead {
+            max-width: 46ch;
+            color: var(--mut);
+            font-size: 17.5px;
+            margin: 0 0 28px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 1.2;
+            text-decoration: none;
+            border: 1.5px solid var(--ac);
+            transition: transform .15s, border-color .2s
+        }
+
+        .btn.p {
+            background: var(--ac);
+            color: var(--on)
+        }
+
+        .btn.g {
+            color: var(--ink);
+            border-color: var(--ln)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.g:hover {
+            border-color: var(--ac)
+        }
+
+        .cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 30px
+        }
+
+        .chip {
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: var(--sf);
+            border: 1px solid var(--ln);
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .deck {
+            position: relative;
+            display: grid;
+            justify-items: center;
+            padding: 16px
+        }
+
+        .disc {
+            width: min(340px, 78vw);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            background: conic-gradient(from 20deg, rgba(255, 255, 255, .14), transparent 18%, rgba(255, 255, 255, .1) 50%, transparent 68%, rgba(255, 255, 255, .14)), repeating-radial-gradient(circle, #090c12 0 2px, #161d29 3px 4px);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .55), 0 0 0 8px var(--s2), 0 0 0 9px var(--ln)
+        }
+
+        .disc.on {
+            animation: spin 5s linear infinite
+        }
+
+        .lb {
+            position: absolute;
+            inset: 31%;
+            border-radius: 50%;
+            background: var(--ac);
+            display: grid;
+            place-items: center;
+            font: 800 clamp(26px, 5vw, 38px)/1 var(--hf);
+            letter-spacing: .04em;
+            color: var(--on);
+            overflow: hidden;
+            box-shadow: inset 0 0 0 5px rgba(0, 0, 0, .14)
+        }
+
+        .lb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .arm {
+            position: absolute;
+            top: 7%;
+            right: 3%;
+            width: 46%;
+            height: 7px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--mut), var(--ink));
+            transform-origin: right center;
+            transform: rotate(38deg);
+            transition: transform .9s cubic-bezier(.3, .7, .2, 1);
+            pointer-events: none
+        }
+
+        .arm::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: -5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            background: var(--ink)
+        }
+
+        .arm::after {
+            content: "";
+            position: absolute;
+            right: -9px;
+            top: -9px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--ac);
+            border: 3px solid var(--sf)
+        }
+
+        .playing .arm {
+            transform: rotate(-6deg)
+        }
+
+        .hint {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--mut)
+        }
+
+        .eq {
+            display: flex;
+            gap: 4px;
+            align-items: flex-end;
+            height: 26px
+        }
+
+        .eq i {
+            width: 5px;
+            height: 6px;
+            border-radius: 2px;
+            background: var(--c2);
+            animation: eq .9s ease-in-out infinite alternate;
+            animation-play-state: paused
+        }
+
+        .playing .eq i {
+            animation-play-state: running
+        }
+
+        .eq i:nth-child(2) {
+            animation-duration: .6s
+        }
+
+        .eq i:nth-child(3) {
+            animation-duration: 1.1s
+        }
+
+        .eq i:nth-child(4) {
+            animation-duration: .75s
+        }
+
+        .eq i:nth-child(5) {
+            animation-duration: .95s
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes eq {
+            to {
+                height: 26px
+            }
+        }
+
+        .mq {
+            overflow: hidden;
+            border-block: 1px solid var(--ln);
+            background: var(--sf);
+            color: var(--ac);
+            font-size: 22px;
+            white-space: nowrap;
+            padding: 6px 0
+        }
+
+        .mq div {
+            display: inline-block;
+            animation: mq 60s linear infinite
+        }
+
+        @keyframes mq {
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* sections */
+        .sec {
+            padding: 76px 0
+        }
+
+        h2 {
+            font: 800 clamp(34px, 5vw, 54px)/1 var(--hf);
+            margin: 0 0 12px
+        }
+
+        h2 .g {
+            color: var(--ac)
+        }
+
+        .sub {
+            color: var(--mut);
+            max-width: 56ch;
+            margin: 0 0 36px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px
+        }
+
+        .card {
+            grid-column: span 6;
+            background: var(--sf);
+            border: 1px solid var(--ln);
+            border-radius: 10px;
+            padding: 26px
+        }
+
+        .card.s7 {
+            grid-column: span 7
+        }
+
+        .card.s5 {
+            grid-column: span 5
+        }
+
+        .card.w {
+            grid-column: 1/-1
+        }
+
+        .card h3 {
+            font: 700 26px/1.1 var(--hf);
+            margin: 0 0 10px
+        }
+
+        .card p {
+            margin: 0 0 12px;
+            color: var(--mut)
+        }
+
+        .ico {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: var(--s2);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            margin-bottom: 14px
+        }
+
+        .bd {
+            display: inline-flex;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--s2);
+            font-size: 13.5px;
+            font-weight: 500;
+            margin: 4px 6px 0 0
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .6s, transform .6s
+        }
+
+        .rv.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .tl {
+            list-style: none;
+            margin: 0 0 30px;
+            padding: 0;
+            border-top: 1px solid var(--ln)
+        }
+
+        .tl a {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            gap: 16px;
+            align-items: center;
+            padding: 18px 8px;
+            border-bottom: 1px solid var(--ln);
+            text-decoration: none;
+            transition: background .2s, padding .2s
+        }
+
+        .tl a:hover {
+            background: var(--sf);
+            padding-left: 18px
+        }
+
+        .tl b {
+            font: 800 34px/1 var(--hf);
+            color: var(--ac)
+        }
+
+        .tl span {
+            font-weight: 500
+        }
+
+        .tl em {
+            font-style: normal;
+            color: var(--mut);
+            font-size: 13.5px
+        }
+
+        /* projects */
+        .pg {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
+
+        .pc {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 24px;
+            background: var(--sf);
+            border: 1px solid var(--ln);
+            border-radius: 10px;
+            text-decoration: none
+        }
+
+        .pc.in:hover {
+            transform: translateY(-4px);
+            border-color: var(--ac)
+        }
+
+        .pc b {
+            font: 800 60px/1 var(--hf);
+            color: var(--ac)
+        }
+
+        .pc h3 {
+            margin: 0;
+            font: 700 23px/1.15 var(--hf)
+        }
+
+        .pc p {
+            margin: 0;
+            color: var(--mut);
+            font-size: 14.5px;
+            flex: 1
+        }
+
+        .lnk {
+            font-weight: 600;
+            font-size: 14.5px;
+            color: var(--ac)
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 22px;
+            color: var(--mut);
+            text-decoration: none;
+            font-size: 14.5px
+        }
+
+        .back:hover {
+            color: var(--ac)
+        }
+
+        .ph {
+            display: flex;
+            gap: 24px;
+            align-items: flex-end;
+            margin-bottom: 32px
+        }
+
+        .ph>b {
+            font: 800 clamp(90px, 15vw, 160px)/.78 var(--hf);
+            color: var(--ac)
+        }
+
+        .ph .sub {
+            margin: 0
+        }
+
+        .pd {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 32px;
+            align-items: start
+        }
+
+        .h3 {
+            font: 700 26px/1.1 var(--hf);
+            margin: 0 0 14px
+        }
+
+        ol.st {
+            counter-reset: s;
+            list-style: none;
+            margin: 0 0 18px;
+            padding: 0;
+            display: grid;
+            gap: 12px
+        }
+
+        ol.st li {
+            counter-increment: s;
+            display: grid;
+            grid-template-columns: 38px 1fr;
+            gap: 14px;
+            align-items: start;
+            padding: 16px;
+            background: var(--sf);
+            border: 1px solid var(--ln);
+            border-radius: 10px
+        }
+
+        ol.st li::before {
+            content: counter(s);
+            font: 800 22px/1 var(--hf);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--ac);
+            color: var(--on);
+            display: grid;
+            place-items: center
+        }
+
+        .fig {
+            margin: 0;
+            border: 1px solid var(--ln);
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--sf)
+        }
+
+        .tb {
+            display: flex;
+            gap: 6px;
+            padding: 11px 12px;
+            background: var(--s2)
+        }
+
+        .tb i {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--ln)
+        }
+
+        .bd2 {
+            display: grid;
+            place-items: center;
+            aspect-ratio: 4/3;
+            font-size: 84px;
+            background: linear-gradient(135deg, var(--sf), var(--s2))
+        }
+
+        .fig figcaption {
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--mut);
+            border-top: 1px solid var(--ln)
+        }
+
+        .pn {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 44px
+        }
+
+        /* footer */
+        footer {
+            border-top: 1px solid var(--ln);
+            background: var(--sf);
+            padding: 44px 0 90px
+        }
+
+        .fg {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 28px
+        }
+
+        .fg h4 {
+            margin: 0 0 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--mut)
+        }
+
+        .fg p {
+            margin: 0 0 6px
+        }
+
+        .fn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font: 800 28px/1 var(--hf)
+        }
+
+        .clef {
+            font-size: 44px;
+            line-height: 1;
+            background: none;
+            border: 0;
+            color: var(--ac);
+            cursor: pointer;
+            padding: 0
+        }
+
+        .cp {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid var(--ln);
+            font-size: 13.5px;
+            color: var(--mut)
+        }
+
+        .snd {
+            position: fixed;
+            right: max(16px, env(safe-area-inset-right, 0px));
+            bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+            z-index: 30;
+            width: 48px;
+            height: 48px;
+            font-size: 19px;
+            box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .5)
+        }
+
+        .fl {
+            position: fixed;
+            bottom: -40px;
+            color: var(--ac);
+            pointer-events: none;
+            z-index: 40;
+            animation: rise 2.4s ease-out forwards
+        }
+
+        @keyframes rise {
+            to {
+                transform: translateY(-110vh) rotate(40deg);
+                opacity: 0
+            }
+        }
+
+        @media(max-width:820px) {
+            .burger {
+                display: grid
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                display: none;
+                background: var(--sf);
+                border-bottom: 1px solid var(--ln);
+                padding: 10px 20px 16px
+            }
+
+            nav.open {
+                display: block
+            }
+
+            nav ul {
+                flex-direction: column
+            }
+
+            .dm {
+                position: static;
+                box-shadow: none;
+                border: 0;
+                min-width: 0;
+                padding: 0 0 0 8px
+            }
+
+            .hg,
+            .pd,
+            .fg {
+                grid-template-columns: 1fr;
+                gap: 32px
+            }
+
+            .pg {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .card,
+            .card.s7,
+            .card.s5 {
+                grid-column: 1/-1
+            }
+
+            .sec {
+                padding: 56px 0
+            }
+        }
+
+        @media(max-width:560px) {
+            .pg {
+                grid-template-columns: 1fr
+            }
+
+            .hero {
+                padding-top: 44px
+            }
+
+            .tl a {
+                grid-template-columns: 44px 1fr
+            }
+
+            .tl em {
+                display: none
+            }
+
+            .ph {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                scroll-behavior: auto !important
+            }
+
+            .rv {
+                opacity: 1;
+                transform: none;
+                transition: none
+            }
+
+            .arm {
+                transition: none
+            }
+        }
+
+        /* dự án: nội dung chi tiết */
+        .pd.one {
+            grid-template-columns: 1fr
+        }
+
+        ol.st li>div {
+            min-width: 0
+        }
+
+        .xg {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+            margin-top: 12px
+        }
+
+        .xg:has(figure:only-child) {
+            grid-template-columns: minmax(0, 520px)
+        }
+
+        .xg figure {
+            margin: 0;
+            border: 1px solid var(--ln);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--sf)
+        }
+
+        .xg img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: zoom-in;
+            background: var(--s2)
+        }
+
+        .xg figcaption {
+            padding: 8px 10px;
+            font-size: 12.5px;
+            color: var(--mut);
+            border-top: 1px solid var(--ln)
+        }
+
+        .xs {
+            margin-top: 40px
+        }
+
+        .xs p {
+            margin: 0 0 12px;
+            color: var(--mut);
+            line-height: 1.65;
+            max-width: 75ch
+        }
+
+        .xl {
+            margin: 0 0 14px;
+            padding-left: 22px;
+            color: var(--mut);
+            line-height: 1.65;
+            max-width: 75ch
+        }
+
+        .xl li {
+            margin-bottom: 6px
+        }
+
+        .xl b,
+        .xs p b {
+            color: var(--ink)
+        }
+
+        .xt {
+            overflow-x: auto;
+            margin: 0 0 16px;
+            border: 1px solid var(--ln);
+            border-radius: 10px
+        }
+
+        .xt table {
+            width: 100%;
+            min-width: 560px;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: var(--sf)
+        }
+
+        .xt th,
+        .xt td {
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--ln)
+        }
+
+        .xt th {
+            background: var(--s2);
+            font-weight: 700
+        }
+
+        .xt tr:last-child td {
+            border-bottom: 0
+        }
+
+        .xq {
+            margin: 0 0 14px;
+            padding: 14px 18px;
+            max-width: 75ch;
+            line-height: 1.65;
+            color: var(--mut);
+            background: var(--sf);
+            border-left: 4px solid var(--ac);
+            border-radius: 0 10px 10px 0
+        }
+
+        .xv {
+            aspect-ratio: 16/9;
+            margin: 0 0 14px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid var(--ln);
+            border-radius: 10px
+        }
+
+        .xv iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0
+        }
+
+        .xs details {
+            margin: 0 0 12px;
+            padding: 12px 16px;
+            background: var(--sf);
+            border: 1px solid var(--ln);
+            border-radius: 10px
+        }
+
+        .xs summary {
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        .xb {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: grid;
+            place-items: center;
+            padding: 16px;
+            background: rgba(0, 0, 0, .88);
+            cursor: zoom-out
+        }
+
+        .xb[hidden] {
+            display: none
+        }
+
+        .xb img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap bar">
+            <a class="brand" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2c5.2 0 9 2.4 9 7 0 6.4-5 13-9 13S3 15.4 3 9c0-4.6 3.8-7 9-7z" />
+                </svg><span data-d="name"></span></a>
+            <nav id="nav" aria-label="Điều hướng chính">
+                <ul>
+                    <li><a class="nl" data-r="home" href="#home">♪ Giới thiệu</a></li>
+                    <li class="dd"><button class="nl" id="ddb" data-r="projects" aria-haspopup="true"
+                            aria-expanded="false">♫ Dự án ▾</button>
+                        <ul class="dm" id="dm"></ul>
+                    </li>
+                    <li><a class="nl" data-r="conclusion" href="#conclusion">♬ Tổng kết</a></li>
+                </ul>
+            </nav>
+            <button class="ic" id="theme" aria-label="Đổi giao diện sáng hoặc tối">◐</button>
+            <button class="ic burger" id="bg" aria-label="Mở menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="view" id="v-home">
+            <section class="hero">
+                <div class="wrap hg">
+                    <div>
+                        <span class="tag">🎼 <span data-d="major"></span> · <span data-d="school"></span></span>
+                        <h1><small>Xin chào, mình là</small><span data-d="name"></span></h1>
+                        <p class="lead">Sinh viên ngành Sư phạm Âm nhạc – yêu ca hát và mong muốn truyền cảm hứng âm
+                            nhạc cho học sinh.</p>
+                        <div class="cta"><a class="btn p" href="#projects">♫ Xem 6 bài tập →</a><a class="btn g"
+                                href="#about">Về mình</a></div>
+                        <div class="chips"><span class="chip">🎤 Thanh nhạc</span><span class="chip">🎸 Nhạc
+                                cụ</span><span class="chip">📚 Sư phạm</span></div>
+                    </div>
+                    <div class="deck">
+                        <button class="disc" id="disc" aria-pressed="false" aria-label="Phát hoặc dừng nhạc nền"><span
+                                class="lb" id="lb"></span></button>
+                        <span class="arm" aria-hidden="true"></span>
+                        <div class="hint"><span>▶ Bấm đĩa để nghe</span><span class="eq"
+                                aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+                    </div>
+                </div>
+            </section>
+            <div class="mq" aria-hidden="true">
+                <div id="mq"></div>
+            </div>
+
+            <section class="sec" id="about-sec">
+                <div class="wrap">
+                    <h2><span class="g">♪</span> Giới thiệu bản thân</h2>
+                    <p class="sub">Vài dòng về mình và cách mình dùng công nghệ trong học tập.</p>
+                    <div class="grid">
+                        <article class="card s7 rv">
+                            <div class="ico">👋</div>
+                            <h3>Về mình</h3>
+                            <p>Xin chào! Mình là <span data-d="name"></span>, sinh viên ngành Sư phạm Âm nhạc tại <span
+                                    data-d="school"></span>.</p>
+                            <span class="bd">🎓 <span data-d="major"></span></span><span class="bd">🪪 <span
+                                    data-d="id"></span></span><span class="bd">🏫 <span data-d="cls"></span></span>
+                        </article>
+                        <article class="card s5 rv">
+                            <div class="ico">🎤</div>
+                            <h3>Sở thích</h3>
+                            <p>Hát</p>
+                        </article>
+                        <article class="card w rv">
+                            <div class="ico">🎯</div>
+                            <h3>Mục tiêu học tập &amp; định hướng phát triển cá nhân</h3>
+                            <p>Sau học phần Công nghệ số, mình muốn đưa những gì đã học – dùng công cụ hỗ trợ học tập,
+                                tìm kiếm và quản lý thông tin, làm quen với AI – vào việc học hằng ngày và công việc sau
+                                này.</p>
+                            <p>Với định hướng trở thành giáo viên Âm nhạc, mình sẽ dùng công nghệ để thiết kế bài giảng
+                                điện tử, trò chơi âm nhạc và video minh họa, đồng thời giữ tài liệu, bài tập và sản phẩm
+                                cá nhân luôn gọn gàng để dễ tra cứu, dễ chia sẻ.</p>
+                        </article>
+                        <article class="card w rv">
+                            <div class="ico">🗂️</div>
+                            <h3>Mục tiêu Portfolio</h3>
+                            <p>Lưu giữ các sản phẩm học tập của mình ở một nơi, để dễ tìm lại và dễ chia sẻ.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sec" style="padding-top:0">
+                <div class="wrap">
+                    <h2><span class="g">♫</span> Hành trình 6 chương học phần</h2>
+                    <p class="sub">Mỗi bài tập là một nốt nhạc – ghép lại thành một bản nhạc hoàn chỉnh.</p>
+                    <ol class="tl" id="tl"></ol>
+                    <a class="btn p" href="#projects">Khám phá dự án →</a>
+                </div>
+            </section>
+        </div>
+
+        <section class="view sec" id="v-projects" hidden>
+            <div class="wrap">
+                <h2><span class="g">♫</span> Tổng quan dự án</h2>
+                <p class="sub">Sáu bài tập của học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo. Chọn một bài
+                    để xem chi tiết.</p>
+                <div class="pg" id="pg"></div>
+            </div>
+        </section>
+
+        <section class="view sec" id="v-conclusion" hidden>
+            <div class="wrap">
+                <h2><span class="g">♬</span> Tổng kết</h2>
+                <p class="sub">Sáu bài tập đi qua ba việc: dùng máy tính thành thạo, dùng thông tin và AI đúng cách, và
+                    biến chúng thành sản phẩm cho việc dạy học.</p>
+                <div class="grid">
+                    <article class="card s5 rv">
+                        <div class="ico">💻</div>
+                        <h3>Kiến thức</h3>
+                        <p>Nắm thao tác quản lý tệp, cách tìm và đánh giá nguồn thông tin, cùng cách AI tạo sinh hoạt
+                            động.</p>
+                    </article>
+                    <article class="card s7 rv">
+                        <div class="ico">🛠️</div>
+                        <h3>Kỹ năng</h3>
+                        <p>Viết prompt rõ ràng, phối hợp nhóm trên công cụ trực tuyến và tạo sản phẩm số phục vụ học
+                            tập.</p>
+                    </article>
+                    <article class="card w rv">
+                        <div class="ico">🎼</div>
+                        <h3>Định hướng</h3>
+                        <p>Ứng dụng công nghệ vào giảng dạy âm nhạc: bài giảng điện tử, trò chơi âm nhạc, video minh họa
+                            – và luôn dùng AI trung thực, có trách nhiệm.</p>
+                    </article>
+                </div>
+                <p style="margin-top:32px"><a class="btn g" href="#home">← Về trang giới thiệu</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="fg">
+                <div>
+                    <div class="fn"><button class="clef" id="clef" aria-label="Khuông nhạc bí mật">𝄞</button><span
+                            data-d="name"></span></div>
+                    <p style="margin-top:10px;color:var(--mut)">Sinh viên Sư phạm Âm nhạc</p>
+                </div>
+                <div>
+                    <h4>Thông tin</h4>
+                    <p>Mã SV: <span data-d="id"></span> · Lớp: <span data-d="cls"></span></p>
+                    <p><span data-d="major"></span> · <span data-d="school"></span></p>
+                </div>
+                <div>
+                    <h4>Học phần</h4>
+                    <p data-d="course"></p>
+                </div>
+            </div>
+            <p class="cp">© <span data-d="name"></span> — Portfolio học phần CNS&amp;AI · 🥚 gõ d·o·r·e·m·i hoặc chạm 𝄞
+                ba lần</p>
+        </div>
+    </footer>
+    <button class="ic snd" id="snd" aria-label="Bật hoặc tắt nhạc nền">🔇</button>
+
+    <script>
+        const hG = (a, c = []) => `<div class="xg">${a.map((s, j) => `<figure><img src="assets/${s}.jpg" alt="${c[j] || ''}" loading="lazy"><figcaption>${c[j] || ''}</figcaption></figure>`).join('')}</div>`;
+        const hT = (h, r) => `<div class="xt"><table><thead><tr>${h.map(x => `<th>${x}</th>`).join('')}</tr></thead><tbody>${r.map(a => `<tr>${a.map(x => `<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+        const hS = (h, b) => `<section class="xs"><h3 class="h3">${h}</h3>${b}</section>`;
+        const hL = (a, o) => { const t = o ? 'ol' : 'ul'; return `<${t} class="xl">${a.map(x => `<li>${x}</li>`).join('')}</${t}>` };
+        const D = {
+            name: 'Bùi Văn Dũng', id: '2552210066', cls: 'INF2501', major: 'Sư phạm Âm nhạc', school: 'Trường Đại học Sư phạm Nghệ thuật Trung ương', course: 'Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo', avatar: 'assets1/avt.jpg',
+            projects: [
+                {
+                    t: 'Thao tác cơ bản với tệp tin và thư mục', e: '📁', s: 'Làm quen với File Explorer để mở, tìm và quản lý tệp, thư mục trên máy tính.', k: ['File Explorer', 'Windows'], st: [
+                        { t: `<b>Mở File Explorer:</b> nhấn tổ hợp phím Windows + E hoặc nhấp vào biểu tượng thư mục màu vàng trên thanh tác vụ.`, i: ['p1-0'] },
+                        { t: `<b>Truy cập ổ đĩa/thư mục:</b> ở cột bên trái, nhấp vào This PC rồi nhấp đúp vào một ổ đĩa không phải ổ hệ thống (D: hoặc E:). Nếu chỉ có ổ C:, hãy vào thư mục Documents.`, i: ['p1-2', 'p1-1'] },
+                        { t: `<b>Tạo thư mục mới:</b> nhấp chuột phải vào khoảng trống → New → Folder, đặt tên ThucHanh_buivandung rồi nhấn Enter.`, i: ['p1-3'] },
+                        { t: `<b>Vào thư mục vừa tạo:</b> nhấp đúp vào thư mục ThucHanh_buivandung.`, i: ['p1-4'] },
+                        { t: `<b>Tạo tệp văn bản:</b> nhấp chuột phải vào khoảng trống → New → Text Document, đặt tên GhiChu.txt rồi nhấn Enter.`, i: ['p1-5'] },
+                        { t: `<b>Đổi tên tệp:</b> nhấp chuột phải vào GhiChu.txt → Rename, đổi thành GhiChuQuanTrong.txt rồi nhấn Enter.`, i: ['p1-6', 'p1-7'] },
+                        { t: `<b>Tạo thư mục con:</b> trong ThucHanh_buivandung, nhấp chuột phải → New → Folder, đặt tên là TaiLieu.`, i: ['p1-9', 'p1-8'] },
+                        { t: `<b>Sao chép tệp (Copy &amp; Paste):</b> chọn GhiChuQuanTrong.txt rồi nhấn Ctrl + C; mở thư mục TaiLieu, nhấp chuột phải vào khoảng trống → Paste (hoặc Ctrl + V) để có một bản sao.`, i: ['p1-10'] },
+                        { t: `<b>Di chuyển tệp (Cut &amp; Paste):</b> tạo tệp DiChuyen.txt, chọn Cut (Ctrl + X) rồi dán vào TaiLieu. Tệp gốc biến mất khỏi vị trí cũ và chỉ còn ở vị trí mới.`, i: ['p1-12', 'p1-11'] },
+                        { t: `<b>Xóa tệp tin:</b> trong TaiLieu, nhấp chuột phải vào GhiChuQuanTrong.txt → Delete. Tệp được chuyển vào Thùng rác (Recycle Bin).`, i: ['p1-14', 'p1-13'] },
+                        { t: `<b>Xóa vĩnh viễn:</b> chọn tệp, giữ Shift rồi nhấn Delete. Sau khi đồng ý với cảnh báo, tệp bị xóa hẳn mà không qua Thùng rác.`, i: ['p1-15'] },
+                        { t: `<b>Khôi phục từ Thùng rác (tùy chọn):</b> mở Recycle Bin trên màn hình nền, nhấp chuột phải vào tệp đã xóa → Restore. Tệp quay trở lại vị trí ban đầu.`, i: ['p1-16', 'p1-17'] }]
+                },
+                {
+                    t: 'Tìm kiếm và đánh giá thông tin học thuật', e: '🔎', s: 'Tìm nguồn tài liệu trên môi trường số và đánh giá độ tin cậy trước khi sử dụng.', k: ['Google Scholar', 'Thư viện số', 'Chuẩn Harvard'], st: [
+                        { t: `<b>Xác lập chủ đề và phạm vi:</b> “Đổi mới phương pháp giảng dạy thực hành Piano đệm hát và Thanh nhạc kết hợp ứng dụng công nghệ cho sinh viên ngành Sư phạm Âm nhạc tại Việt Nam hiện nay”; tìm trong giai đoạn 2015–2025, bằng tiếng Việt và tiếng Anh.` },
+                        { t: `<b>Thu thập 12 tài liệu</b> thuộc 4 nhóm nguồn: cơ sở dữ liệu học thuật (Google Scholar, thư viện trường), tạp chí chuyên ngành, sách chuyên khảo và giáo trình, nguồn mở trên Internet; có thêm 1 luận án tiến sĩ ở mục mở rộng.` },
+                        { t: `<b>Đánh giá độ tin cậy</b> từng nguồn theo 5 tiêu chí: tác giả, cơ quan xuất bản, phương pháp nghiên cứu, trích dẫn và tính cập nhật.` },
+                        { t: `<b>Quy đổi điểm (thang 10) và xếp hạng</b> 12 nguồn theo mức độ tin cậy.` },
+                        { t: `<b>Lập danh mục tài liệu tham khảo</b> theo chuẩn trích dẫn Harvard.` }],
+                    x: hS('Bảng xếp hạng độ tin cậy của 12 nguồn', hT(['Hạng', 'Tài liệu (tác giả, năm)', 'Loại nguồn', 'Điểm', 'Độ tin cậy'], [
+                        [1, 'Welch &amp; Henley (2018)', 'Tạp chí KH quốc tế', '9.7', 'Rất cao'], [2, 'Calderón-Garrido et al. (2021)', 'CSDL Google Scholar', '9.7', 'Rất cao'], [3, 'Bộ GD&amp;ĐT (2018)', 'Nguồn mở Chính phủ', '9.6', 'Rất cao'], [4, 'Christensen, L. (2019)', 'CSDL Google Scholar', '9.4', 'Rất cao'], [5, 'Lê Anh Tuấn (2020)', 'Tạp chí KH chuyên ngành', '9.4', 'Rất cao'], [6, 'Nguyễn Văn Hảo (2021)', 'CSDL Luận án Quốc gia', '9.3', 'Rất cao'],
+                        [7, 'Nguyễn Thị Tuyết et al. (2021)', 'Tạp chí KH chuyên ngành', '9.1', 'Cao'], [8, 'Phạm Phương Hoa (2020)', 'Tạp chí KH chuyên ngành', '9.0', 'Cao'], [9, 'Khoa SP Âm nhạc NUAE (2022)', 'CSDL Thư viện trường', '8.9', 'Cao'], [10, 'MIT OpenCourseWare (2022)', 'Học liệu mở quốc tế', '8.8', 'Cao'], [11, 'Hoàng Long &amp; Hoàng Lân (2017)', 'Sách chuyên khảo', '8.7', 'Cao'], [12, 'Nguyễn Bách (2018)', 'Sách chuyên khảo', '8.1', 'Khá cao']]))
+                        + hS('Nhận xét theo nhóm nguồn', hL([`<b>Bài báo quốc tế</b> (Welch &amp; Henley, Calderón-Garrido, Christensen): tác giả đầu ngành, đăng trên tạp chí peer-reviewed (SAGE, Taylor &amp; Francis), phương pháp tổng quan hệ thống hoặc khảo sát chặt chẽ, trích dẫn cao.`, `<b>Tạp chí chuyên ngành trong nước</b> (Lê Anh Tuấn, Nguyễn Thị Tuyết, Phạm Phương Hoa): thuộc danh mục tính điểm của Hội đồng Giáo sư Nhà nước, bám sát thực tiễn đào tạo tại NUAE.`, `<b>CSDL trường và luận án tiến sĩ</b> (Khoa SPÂN NUAE, Nguyễn Văn Hảo): dữ liệu thực nghiệm sư phạm trên sinh viên Sư phạm Âm nhạc Việt Nam, danh mục trích dẫn đầy đủ, tính cập nhật cao.`, `<b>Sách chuyên khảo và nguồn mở</b> (Bộ GD&amp;ĐT, MIT OCW, Hoàng Long &amp; Hoàng Lân, Nguyễn Bách): văn bản pháp quy và học liệu MIT chính xác cao; sách cung cấp nền tảng lý luận và mẫu âm hình đệm dù xuất bản trước 2019.`]))
+                        + hS('Danh mục tài liệu tham khảo (Harvard)', `<details><summary>Xem danh mục 12 tài liệu</summary>` + hL([`Bộ Giáo dục và Đào tạo (2018) <i>Chương trình Giáo dục phổ thông môn Âm nhạc</i> (Thông tư 32/2018/TT-BGDĐT). Hà Nội: Bộ Giáo dục và Đào tạo.`, `Calderón-Garrido, D., Cisneros, P. and Gustems-Carnicer, J. (2021) ‘Digital technology in music education: A systematic review of pedagogical practices in higher education’, <i>Music Education Research</i>, 23(4), pp. 425–439.`, `Christensen, L. (2019) ‘The role of functional piano skills in music teacher education: A survey of current practices’, <i>Update: Applications of Research in Music Education</i>, 37(3), pp. 18–26.`, `Hoàng Long và Hoàng Lân (2017) <i>Phương pháp dạy học Âm nhạc</i>. Hà Nội: Nhà xuất bản Đại học Sư phạm.`, `Khoa Sư phạm Âm nhạc – Trường Đại học Sư phạm Nghệ thuật Trung ương (2022) <i>Phát triển năng lực thực hành đệm Piano cho sinh viên ngành Sư phạm Âm nhạc đáp ứng chuẩn đầu ra</i>. Hà Nội: Thư viện Trường ĐHSP Nghệ thuật Trung ương.`, `Lê Anh Tuấn (2020) ‘Phát triển năng lực dạy học môn Âm nhạc cho sinh viên sư phạm đáp ứng Chương trình Giáo dục phổ thông 2018’, <i>Tạp chí Giáo dục</i>, 479(1), tr. 12–16.`, `Massachusetts Institute of Technology (2022) <i>Harmony and Counterpoint / Fundamentals of Music Pedagogy</i>. MIT OpenCourseWare.`, `Nguyễn Bách (2018) <i>Giáo trình Hòa âm ứng dụng và Thực hành đệm Piano cho ca khúc</i>. Hà Nội: Nhà xuất bản Âm nhạc.`, `Nguyễn Thị Tuyết và Cộng sự (2021) ‘Nâng cao chất lượng dạy học môn Thanh nhạc cho sinh viên ngành Sư phạm Âm nhạc tại Trường Đại học Sư phạm Nghệ thuật Trung ương’, <i>Tạp chí Giáo dục Nghệ thuật</i>, 36, tr. 24–29.`, `Nguyễn Văn Hảo (2021) <i>Rèn luyện kỹ năng đệm đàn phím điện tử và Piano cho sinh viên ngành Sư phạm Âm nhạc tại các trường đại học</i>. Luận án Tiến sĩ. Hà Nội: Thư viện Quốc gia Việt Nam.`, `Phạm Phương Hoa (2020) ‘Vận dụng hòa âm cổ điển và hiện đại trong thực hành đệm đàn Piano cho ca khúc Việt Nam’, <i>Tạp chí Nghiên cứu Âm nhạc</i>, 68, tr. 31–38.`, `Welch, G.F. and Henley, J. (2018) ‘Preparing future music teachers: Integrating vocal pedagogy and accompaniment skills in classroom practice’, <i>International Journal of Music Education</i>, 36(2), pp. 210–225.`]) + `</details>`)
+                },
+                {
+                    t: 'Viết Prompt hiệu quả cho các tác vụ học tập', e: '✍️', s: 'Thiết kế câu lệnh theo ba cấp độ cho các tác vụ học tập của ngành Sư phạm Âm nhạc.', k: ['Gemini', 'Prompt Engineering'], st: [
+                        { t: `<b>Chọn 3 tác vụ học tập</b> đặc thù của ngành: tóm tắt tài liệu chuyên ngành, giải thích khái niệm phức tạp, biên soạn bộ câu hỏi ôn tập.` },
+                        { t: `<b>Viết 3 cấp độ câu lệnh</b> cho mỗi tác vụ (cơ bản, cải tiến, nâng cao) rồi chạy thử trên Gemini.` },
+                        { t: `<b>So sánh kết quả</b> theo mức độ định hướng, cấu trúc đầu ra, tính ứng dụng học tập và khả năng kiểm soát sai số.` },
+                        { t: `<b>Rút ra nguyên tắc, mẹo và công thức</b> viết prompt chuẩn để áp dụng nhanh.` }],
+                    x: hS('Tác vụ 1: Tóm tắt tài liệu chuyên ngành', `<p><b>Tài liệu thử nghiệm:</b> Giáo trình Lịch sử Âm nhạc Thế giới – Chuyên đề Thời kỳ Cổ điển và Lãng mạn.</p>` + hL([`<b>Cơ bản:</b> “Hãy tóm tắt nội dung chính của tài liệu này giúp tôi.”`, `<b>Cải tiến:</b> nêu rõ đối tượng (sinh viên năm 2 Sư phạm Âm nhạc); liệt kê các chương mục, mỗi chương 4–6 gạch đầu dòng về bối cảnh, thể loại tiêu biểu, nhạc sĩ đại diện; chỉ bám sát tài liệu, không bổ sung kiến thức ngoài.`, `<b>Nâng cao:</b> đóng vai giảng viên Âm nhạc học, tổng hợp theo 5 tiêu chí: mạch phát triển lịch sử, hệ thống khái niệm và thể loại, bảng đối chiếu tác giả – tác phẩm (Haydn, Mozart, Beethoven, Schubert, Chopin, Liszt), giá trị vận dụng sư phạm, 5 ý Key Takeaways.`]) + hG(['p3-1', 'p3-2', 'p3-3'], ['Tác vụ 1 · Prompt cơ bản', 'Tác vụ 1 · Prompt cải tiến', 'Tác vụ 1 · Prompt nâng cao']))
+                        + hS('Tác vụ 2: Giải thích khái niệm phức tạp', `<p><b>Chủ đề thử nghiệm:</b> Hình thức Sonate (Sonata Form) trong môn Phân tích tác phẩm âm nhạc.</p>` + hL([`<b>Cơ bản:</b> “Hãy giải thích khái niệm hình thức Sonate trong âm nhạc cổ điển.”`, `<b>Cải tiến:</b> dành cho sinh viên năm 2; định nghĩa trực quan, cấu trúc 3 phần (Trình bày, Phát triển, Tái hiện), quy luật tương quan điệu tính giữa Chủ đề 1 và 2, một ví dụ của Mozart hoặc Beethoven, những nhầm lẫn thường gặp.`, `<b>Nâng cao:</b> đóng vai giảng viên bộ môn Phân tích tác phẩm, đi qua 6 bước: khái niệm cốt lõi (ví như một “vở kịch âm nhạc”), sơ đồ cấu trúc và điệu tính, phân tích chương I Sonata số 16 giọng Đô trưởng K. 545 của Mozart, ứng dụng ở bậc THCS, cảnh báo 3 lỗi sai phổ biến, 3 nguyên tắc vàng khi đọc tổng phổ.`]) + hG(['p3-4', 'p3-5', 'p3-6'], ['Tác vụ 2 · Prompt cơ bản', 'Tác vụ 2 · Prompt cải tiến', 'Tác vụ 2 · Prompt nâng cao']))
+                        + hS('Tác vụ 3: Biên soạn bộ câu hỏi ôn tập', `<p><b>Chủ đề thử nghiệm:</b> Học phần Phương pháp dạy học Âm nhạc (chuyên đề: Tổ chức hoạt động dạy hát và cảm thụ âm nhạc theo Chương trình GDPT 2018).</p>` + hL([`<b>Cơ bản:</b> “Tạo giúp tôi 10 câu hỏi ôn tập về môn Phương pháp dạy học Âm nhạc.”`, `<b>Cải tiến:</b> 10 câu trắc nghiệm khách quan về quy trình dạy hát và tổ chức trò chơi cảm thụ âm nhạc ở bậc Tiểu học, xếp từ dễ đến khó, có đáp án ở cuối bài.`, `<b>Nâng cao:</b> đóng vai chuyên gia khảo thí; ma trận 4 câu Nhận biết, 4 câu Thông hiểu, 2 câu Vận dụng; bảng tổng hợp 3 cột (Câu hỏi – Đáp án chuẩn – Giải thích cơ sở lý luận sư phạm); dùng đúng thuật ngữ như khởi động giọng, dạy hát từng câu móc xích, Dalcroze Eurhythmics, phương pháp Kodály.`]) + hG(['p3-7', 'p3-8', 'p3-9'], ['Tác vụ 3 · Prompt cơ bản', 'Tác vụ 3 · Prompt cải tiến', 'Tác vụ 3 · Prompt nâng cao']))
+                        + hS('So sánh hiệu quả giữa ba cấp độ prompt', hT(['Tiêu chí', 'Prompt cơ bản', 'Prompt cải tiến', 'Prompt nâng cao'], [['Mức độ định hướng', 'Chung chung, AI tự quyết định trọng tâm nội dung.', 'Xác định rõ đối tượng (sinh viên năm 2) và phạm vi kiến thức.', 'Định vị vai trò chuyên gia, chia lộ trình tư duy từng bước.'], ['Cấu trúc đầu ra', 'Đoạn văn liền mạch, thiếu phân tầng ý chính – phụ.', 'Gạch đầu dòng theo yêu cầu cụ thể.', 'Đa định dạng: đề mục, bảng đối chiếu, ví dụ thực tế, tóm tắt.'], ['Tính ứng dụng học tập', 'Chỉ để tham khảo nhanh khái niệm bề mặt.', 'Hỗ trợ ghi chép, hệ thống hóa kiến thức cơ bản.', 'Dùng ngay như tài liệu ôn thi chuyên sâu hoặc giáo án tham khảo.'], ['Kiểm soát sai số', 'Dễ lan man, pha trộn thông tin ngoài giáo trình.', 'Giảm thông tin thừa nhờ giới hạn phạm vi.', 'Hạn chế lỗi nhờ tiêu chuẩn học thuật và ma trận ràng buộc.']]))
+                        + hS('Yếu tố giúp prompt hiệu quả và những lưu ý', hL([`<b>Mục tiêu đầu ra rõ ràng</b>, <b>bối cảnh và đối tượng</b> cụ thể, <b>vai trò chuyên gia</b>, <b>định dạng trình bày</b> và <b>ranh giới kiểm soát</b> (ví dụ: không thêm thông tin ngoài tài liệu). Hiệu quả nằm ở mật độ thông tin có chủ đích, không phải độ dài.`, `<b>Hạn chế:</b> AI có thể “ảo giác” với số nhịp tổng phổ, ký hiệu Opus/Köchel hay quy luật hòa thanh; nhồi quá nhiều yêu cầu vào một câu lệnh có thể làm AI bỏ sót tiêu chí; luôn đối chiếu với giáo trình, tổng phổ gốc và giảng viên.`, `<b>Mẹo thực chiến:</b> dùng khung [Bối cảnh], [Nhiệm vụ], [Yêu cầu], [Định dạng]; đưa 1–2 mẫu ví dụ (few-shot); nêu rõ điều AI không được làm; chốt định dạng đầu ra; chia nhỏ tác vụ lớn thành từng bước.`]) + `<blockquote class="xq"><b>Công thức nhanh:</b> “Hãy đóng vai [Vai trò chuyên gia]. Tôi là [Đối tượng người học] đang thực hiện nhiệm vụ [Mục tiêu/Bối cảnh cụ thể]. Hãy giúp tôi [Nhiệm vụ chi tiết] theo trình tự [Các bước thực hiện], trình bày dưới dạng [Bảng biểu/Gạch đầu dòng] với văn phong [Học thuật/Trực quan dễ hiểu]. Lưu ý tuyệt đối không [Các giới hạn/Điều cần tránh].”</blockquote>`)
+                },
+                {
+                    t: 'Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm', e: '🤝', s: 'Lên lịch, tổ chức, ghi hình và chia sẻ cuộc họp nhóm trên Google Meet.', k: ['Google Meet', 'Google Docs', 'Google Drive', 'Trello'], st: [
+                        { t: `<b>Giai đoạn 1 · Tạo và lên lịch cuộc họp:</b> nhóm trưởng Phạm Văn Huấn tạo sự kiện từ Google Meet, đặt tiêu đề, chọn khung giờ 25–30 phút, mời thành viên và đính kèm chương trình nghị sự.`, i: ['p4-1', 'p4-2'], c: ['Lịch Google: Create → Event', 'Hộp thoại tạo sự kiện: thêm khách và Google Meet'] },
+                        { t: `<b>Giai đoạn 2 · Tổ chức và ghi hình (20–30 phút):</b> mở phòng họp, duyệt thành viên, xin phép rồi bật ghi hình, lần lượt chia sẻ màn hình trình bày; thư ký ghi biên bản trực tiếp.` },
+                        { t: `<b>Giai đoạn 3 · Lấy link bản ghi và chia sẻ kết quả:</b> lấy video trong thư mục Meet Recordings trên Google Drive, mở quyền xem bằng liên kết, gửi biên bản vào thư mục chung và dán link vào báo cáo nhóm.` }],
+                    x: hS('Giai đoạn 1: Tạo và lên lịch cuộc họp', hL([`Nhóm trưởng Phạm Văn Huấn đăng nhập Gmail và truy cập meet.google.com.`, `Nhấp <b>Cuộc họp mới</b> (New meeting) → <b>Lịch biểu trong Lịch Google</b> (Schedule in Google Calendar).`, `Ở ô <b>Thêm tiêu đề</b>, nhập: “Họp nhóm: Ứng dụng AI trong thiết kế bài giảng Âm nhạc cho học sinh THCS”.`, `Chọn ngày họp và đặt khung giờ 25–30 phút để đúng thời lượng 20–30 phút của bài tập.`, `Ở mục <b>Thêm khách</b> (Add guests), nhập Gmail của 4 thành viên: Bùi Văn Dũng, Đào Ngọc Diệp, Nguyễn Đình Dũng, Nguyễn Thuỳ Dung.`, `Ở ô mô tả/tệp đính kèm, nhấn biểu tượng kẹp giấy để đính kèm slide, khung giáo án và dán chương trình nghị sự.`, `Nhấp <b>Lưu</b> (Save) → <b>Gửi</b> (Send) để hệ thống gửi email kèm link Google Meet cho cả 5 thành viên.`], true))
+                        + hS('Giai đoạn 2: Tổ chức và ghi hình trong cuộc họp', hL([`Trước giờ hẹn 5 phút, Phạm Văn Huấn nhấp <b>Tham gia bằng Google Meet</b>, bật camera/micro và nhấn <b>Tham gia ngay</b> (Join now).`, `Khi các thành viên nhấn vào link, nhóm trưởng nhấn <b>Chấp nhận</b> (Admit) để duyệt vào phòng.`, `Sau khi cả 5 thành viên đồng ý, chọn biểu tượng <b>Hoạt động</b> → <b>Ghi lại</b> (Recording) → <b>Bắt đầu ghi</b> (Start recording).`, `Bùi Văn Dũng, Nguyễn Đình Dũng, Nguyễn Thuỳ Dung lần lượt nhấn <b>Trình bày ngay</b> (Present now) → chọn một thẻ hoặc toàn bộ màn hình để chiếu slide và bảng Trello.`, `Thư ký Đào Ngọc Diệp mở Google Docs song song để ghi nội dung, các quyết định và nhiệm vụ tiếp theo của từng người.`, `Cuối buổi, thư ký chia sẻ màn hình biên bản để cả nhóm thông qua; Phạm Văn Huấn chọn <b>Dừng ghi</b> (Stop recording) rồi kết thúc cuộc gọi.`], true))
+                        + hS('Giai đoạn 3: Lấy link bản ghi và chia sẻ kết quả', hL([`Sau khi họp kết thúc khoảng 5–10 phút, người bấm ghi hình mở Google Drive → thư mục <b>Meet Recordings</b> để lấy file video.`, `Nhấp chuột phải vào video → <b>Chia sẻ</b> (Share) → đổi quyền thành “Bất kỳ ai có đường liên kết đều có thể xem” → sao chép đường liên kết.`, `Thư ký gửi biên bản và nhiệm vụ tiếp theo vào thư mục Drive chung để cả 5 thành viên viết đoạn đánh giá ngắn kèm đề xuất cải thiện.`, `Phạm Văn Huấn dán link bản ghi vào cuối file báo cáo nhóm (4–5 trang) để đại diện nhóm nộp bài.`], true))
+                        + hS('Nội dung mẫu cho ô “Mô tả cuộc họp”', hL([`<b>Mục tiêu:</b> thống nhất quy trình và công cụ AI hỗ trợ thiết kế bài giảng Âm nhạc cấp THCS.`, `<b>Phân công vai trò:</b> Phạm Văn Huấn (điều phối), Đào Ngọc Diệp (thư ký), Bùi Văn Dũng – Nguyễn Đình Dũng – Nguyễn Thuỳ Dung (người trình bày).`, `<b>Chương trình nghị sự (25 phút):</b> mở đầu và xin phép ghi hình (3 phút); trình bày đề xuất công cụ AI và bảng Trello (12 phút); thảo luận chung (7 phút); chốt biên bản và nhiệm vụ (3 phút).`, `<b>Tài liệu cần thiết:</b> link thư mục Google Drive học liệu của nhóm và link bảng quản lý dự án trên Trello.`]))
+                },
+                {
+                    t: 'Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung', e: '✨', s: 'Nhóm 03 sản xuất video ứng dụng AI trong thiết kế bài giảng Âm nhạc cho học sinh THCS.', k: ['AI tạo sinh', 'Suno AI', 'CapCut', 'Canva'], st: [
+                        { t: `<b>Bước 1 · Nghiên cứu chủ đề và xây dựng kịch bản</b> (18/10–21/10/2026): họp trực tuyến qua Google Meet, chọn bài giảng Âm nhạc cấp THCS làm trọng tâm; cùng làm storyboard, viết lời dẫn, chuẩn bị prompt và chia bối cảnh ghi hình.` },
+                        { t: `<b>Bước 2 · Tạo học liệu bằng AI và ghi hình</b> (22/10–27/10/2026): dùng AI tạo sinh làm khung kế hoạch bài dạy, hình ảnh nhạc cụ, nhạc mẫu, beat đệm và bộ câu hỏi tương tác; cả 5 thành viên diễn xuất, thao tác mẫu trên phần mềm và thu lời bình.` },
+                        { t: `<b>Bước 3 · Dựng hậu kỳ và hoàn thiện thuyết trình</b> (28/10–31/10/2026): cắt ghép phân cảnh, cân chỉnh âm lượng giọng đọc và nhạc nền, thêm hiệu ứng chuyển cảnh, phụ đề; xem lại bản nháp và luyện thuyết trình.` }],
+                    x: hS('Sản phẩm video', `<div class="xv"><iframe src="https://www.youtube.com/embed/A-Afkpc5RAg" title="Video nhóm 03: Ứng dụng AI trong thiết kế bài giảng Âm nhạc cho học sinh THCS" loading="lazy" allowfullscreen></iframe></div><p><a class="btn p" href="https://youtu.be/A-Afkpc5RAg" target="_blank" rel="noopener">Xem trên YouTube ↗</a></p>`)
+                        + hS('Thông tin dự án và phân công', `<p><b>Dự án:</b> “Ứng dụng trí tuệ nhân tạo (AI) trong thiết kế bài giảng môn Âm nhạc cho học sinh Trung học cơ sở” · <b>Nhóm 03</b>, lớp INF2501. Cả 5 thành viên cùng tham gia lên kịch bản, quay video, dựng phim và thuyết trình.</p>` + hT(['Thành viên', 'Nhiệm vụ chuyên trách'], [['Phạm Văn Huấn (nhóm trưởng)', 'Điều phối tiến độ, xây khung kịch bản, kiểm duyệt bản dựng cuối, thuyết trình phần mở đầu – tổng kết.'], ['Bùi Văn Dũng', 'Kịch bản phân cảnh thực hành âm nhạc, dùng AI tạo nhạc mẫu và tách nhạc đệm, xử lý hậu kỳ âm thanh, thuyết trình mảng công cụ AI âm thanh.'], ['Đào Ngọc Diệp', 'Góp ý tưởng kịch bản, biên tập lời bình (voice-off), đồng bộ phụ đề, viết báo cáo tổng hợp, thuyết trình quy trình thực hiện.'], ['Nguyễn Đình Dũng', 'Kịch bản hoạt động dạy học và trò chơi tương tác, chuẩn bị khung giáo án mẫu bằng AI, hỗ trợ cắt ghép, thuyết trình phần thiết kế bài dạy.'], ['Nguyễn Thuỳ Dung', 'Kịch bản phân cảnh sư phạm, thiết kế đồ họa slide và intro, chỉnh hiệu ứng chuyển cảnh, thuyết trình phần đánh giá tính sư phạm.']]))
+                        + hS('Công cụ đã sử dụng', hL([`<b>Họp nhóm và quản lý công việc:</b> Google Meet, Trello, Google Docs, Google Drive, Zalo.`, `<b>AI tạo sinh văn bản, hình ảnh, âm thanh:</b> Gemini, ChatGPT (ý tưởng kịch bản, giáo án), Suno AI, Moises.ai (tạo nhạc minh họa, tách beat), Quizizz AI và công cụ tạo video AI.`, `<b>Thiết kế và dựng phim:</b> CapCut (dựng video, lọc tạp âm, phụ đề), Canva (intro/outro, slide bài giảng).`, `<b>Trình chiếu báo cáo:</b> Google Slides / Microsoft PowerPoint.`]))
+                        + hS('Khó khăn và hướng giải quyết', hL([`<b>Sắp xếp lịch trình chung:</b> lịch học và việc cá nhân của 5 thành viên lệch nhau nên khó tìm giờ quay đủ người. Nhóm trưởng lập bảng theo dõi tiến độ trên Trello và họp nhanh trên Google Meet vào buổi tối để chốt kịch bản, dành cuối tuần để bấm máy.`, `<b>Độ chính xác của học liệu AI và tạp âm:</b> một số hình ảnh, âm thanh AI chưa đồng nhất phong cách hoặc chưa chuẩn nhịp phách; vài cảnh quay lẫn tiếng ồn. Nhóm tinh chỉnh prompt qua nhiều lần, kiểm duyệt chuyên môn để chọn học liệu chuẩn, thu lại lời bình trong phòng kín và khử tạp âm bằng CapCut.`]))
+                },
+                {
+                    t: 'Sử dụng AI có trách nhiệm trong học tập và nghiên cứu', e: '🛡️', s: 'Dùng AI trung thực: kiểm chứng thông tin, trích dẫn nguồn, bảo vệ dữ liệu cá nhân.', k: ['Đạo đức số', 'Liêm chính học thuật'], st: [
+                        { t: `<b>Nhận diện 3 thách thức</b> của AI tạo sinh đối với liêm chính học thuật: đạo văn do AI hỗ trợ, “ảo giác” và thiên kiến.` },
+                        { t: `<b>Nắm 5 nguyên tắc</b> dùng AI có trách nhiệm: minh bạch, trách nhiệm, trung thực và nguyên bản, giám sát của con người, bảo vệ dữ liệu.` },
+                        { t: `<b>Trích dẫn nội dung do AI tạo ra</b> theo chuẩn Harvard.` },
+                        { t: `<b>Tìm hiểu quy định pháp luật</b> cơ bản về an ninh mạng, dữ liệu cá nhân và sở hữu trí tuệ tại Việt Nam.` },
+                        { t: `<b>Xây dựng bộ nguyên tắc cá nhân</b> và cam kết thực hiện trong học tập.` }],
+                    x: hS('Ba thách thức của AI tạo sinh', hL([`<b>Đạo văn do AI hỗ trợ:</b> lạm dụng AI để diễn giải lại hoặc tạo nội dung mà bản thân không hiểu, không có đóng góp tư duy, làm mờ ranh giới giữa công cụ hỗ trợ và gian lận.`, `<b>“Ảo giác” của AI:</b> AI có thể tự tin bịa ra sự kiện, số liệu, thậm chí trích dẫn bài báo không tồn tại; cần kiểm chứng trước khi dùng.`, `<b>Thiên kiến trong AI:</b> mô hình học từ dữ liệu Internet nên có thể tái tạo định kiến về giới tính, chủng tộc, văn hóa.`]))
+                        + hS('Bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm', hT(['Nguyên tắc', 'Cam kết', 'Hành động thực tế'], [['Minh bạch', 'Luôn nói rõ đã dùng công cụ AI nào (ChatGPT, Gemini…) vào mục đích gì; không che giấu.', 'Ghi chú trong bài hoặc trích dẫn đầy đủ theo chuẩn quy định (như Harvard).'], ['Trách nhiệm cá nhân', 'Người học chịu trách nhiệm cuối cùng về độ chính xác, logic và nội dung; không đổ lỗi cho AI.', 'Kiểm tra, xác thực mọi thông tin, số liệu AI tạo ra để tránh “ảo giác”.'], ['Trung thực và nguyên bản', 'Dùng AI để hỗ trợ tư duy (động não, tóm tắt tài liệu, kiểm tra ngữ pháp), không thay thế lao động trí tuệ.', 'Phân định rõ công cụ hỗ trợ với đạo văn do AI hỗ trợ, gian lận hợp đồng.'], ['Giám sát và tư duy phản biện', 'Không sao chép – dán kết quả từ AI một cách máy móc.', 'Chủ động xem xét, đánh giá, biên tập mọi nội dung AI cung cấp.'], ['Bảo vệ dữ liệu và quyền riêng tư', 'Thận trọng với dữ liệu đưa lên chatbot công khai.', 'Tránh nhập thông tin cá nhân, dữ liệu nhạy cảm, tài liệu chưa công bố vào AI công cộng.']]) + hL([`<b>Được phép:</b> dùng ChatGPT lập danh sách ý tưởng ban đầu cho bài luận, sau đó tự nghiên cứu và phát triển lập luận từ nguồn học thuật đáng tin cậy.`, `<b>Không được phép:</b> nộp bài luận gần như hoàn toàn do ChatGPT viết, chỉ sửa vài chỗ câu chữ.`]))
+                        + hS('Trích dẫn nội dung do AI tạo ra (chuẩn Harvard)', `<p>Trong bài: (Tên nhà phát triển AI, Năm). Danh mục tham khảo: Tên nhà phát triển AI (Năm). <i>Tên công cụ AI</i>: Phản hồi cho [Tên người dùng], Ngày Tháng. Có sẵn tại: URL (nếu có chia sẻ). Với hình ảnh từ Midjourney/DALL-E, ghi mô tả prompt đã dùng và đánh dấu [Nghệ thuật số].</p>`)
+                        + hS('Quy định pháp luật cơ bản tại Việt Nam', hL([`<b>Luật An ninh mạng 2018:</b> cấm đăng tải thông tin sai sự thật, xúc phạm danh dự, nhân phẩm, lừa đảo chiếm đoạt tài sản…; người dùng chịu trách nhiệm về nội dung và tài khoản của mình.`, `<b>Nghị định 13/2023/NĐ-CP:</b> hiệu lực từ tháng 7/2023; thu thập, xử lý dữ liệu cá nhân phải có sự đồng ý rõ ràng; cá nhân có quyền được biết, truy cập, chỉnh sửa và xóa dữ liệu.`, `<b>Luật Sở hữu trí tuệ:</b> bảo hộ quyền tác giả với bài viết, sách, phần mềm, tác phẩm nghệ thuật; sao chép khi chưa được phép là vi phạm, kể cả với nội dung số.`, `<b>Luật Bảo vệ dữ liệu cá nhân 2025 (Luật số 91/2025/QH15):</b> hiệu lực từ 01/01/2026; quy định quyền, nghĩa vụ của chủ thể dữ liệu, bên kiểm soát và bên xử lý dữ liệu.`]))
+                }
+            ]
+        };
+        const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], P = D.projects, main = $('main');
+        $$('[data-d]').forEach(e => e.textContent = D[e.dataset.d]);
+        $('#lb').innerHTML = D.avatar ? `<img src="${D.avatar}" alt="Ảnh của ${D.name}">` : D.name.split(' ').map(w => w[0]).join('');
+        const g = '♪ ♫ ♩ ♬ '.repeat(26); $('#mq').textContent = g + g;
+        $('#dm').innerHTML = '<li><a href="#projects"><b>♪</b>Tổng quan dự án</a></li>' + P.map((p, i) => `<li><a href="#project-${i + 1}"><b>${i + 1}</b>${p.t}</a></li>`).join('');
+        $('#tl').innerHTML = P.map((p, i) => `<li><a href="#project-${i + 1}"><b>${String(i + 1).padStart(2, '0')}</b><span>${p.t}</span><em>${p.k[0]}</em></a></li>`).join('');
+        $('#pg').innerHTML = P.map((p, i) => `<a class="pc rv" href="#project-${i + 1}" style="transition-delay:${i * 70}ms"><b>${i + 1}</b><h3>${p.t}</h3><p>${p.s}</p><span class="lnk">Xem chi tiết →</span></a>`).join('');
+        main.insertAdjacentHTML('beforeend', P.map((p, i) => { const n = i + 1; return `<section class="view sec" id="v-project-${n}" hidden><div class="wrap"><a class="back" href="#projects">← Tổng quan dự án</a><div class="ph"><b>${n}</b><div><h2>${p.t}</h2><p class="sub">${p.s}</p></div></div><div class="pd one"><div><h3 class="h3">Các bước thực hiện</h3><ol class="st">${p.st.map((x, j) => `<li><div><span>${x.t}</span>${x.i ? hG(x.i, x.c || x.i.map(() => 'Minh họa bước ' + (j + 1))) : ''}</div></li>`).join('')}</ol><div>${p.k.map(k => `<span class="bd">🛠 ${k}</span>`).join('')}</div></div></div>${p.x || ''}<div class="pn">${n > 1 ? `<a class="btn g" href="#project-${n - 1}">← Bài ${n - 1}</a>` : '<span></span>'}${n < P.length ? `<a class="btn p" href="#project-${n + 1}">Bài ${n + 1} →</a>` : '<a class="btn p" href="#conclusion">Tổng kết →</a>'}</div></div></section>` }).join(''));
+        document.body.insertAdjacentHTML('beforeend', '<div class="xb" hidden><img alt=""></div>');
+        const xb = $('.xb'); main.addEventListener('click', e => { const t = e.target; if (t.matches('.xg img')) { xb.firstChild.src = t.src; xb.firstChild.alt = t.alt; xb.hidden = false } });
+        xb.addEventListener('click', () => { xb.hidden = true }); addEventListener('keydown', e => { if (e.key === 'Escape') xb.hidden = true });
+
+        /* điều hướng theo hash */
+        const V = ['home', 'projects', 'conclusion', ...P.map((_, i) => 'project-' + (i + 1))], dd = $('.dd'), db = $('#ddb'), nav = $('#nav'), bg = $('#bg');
+        function closeMenus() { dd.classList.remove('open'); db.setAttribute('aria-expanded', 'false'); nav.classList.remove('open'); bg.setAttribute('aria-expanded', 'false') }
+        function route() {
+            let h = location.hash.slice(1) || 'home', sec = false; if (h === 'about') { h = 'home'; sec = true } if (!V.includes(h)) h = 'home';
+            $$('.view').forEach(v => v.hidden = v.id !== 'v-' + h);
+            const k = h === 'home' ? 'home' : h === 'conclusion' ? 'conclusion' : 'projects';
+            $$('[data-r]').forEach(a => a.dataset.r === k ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+            document.title = (h === 'home' ? '' : h === 'projects' ? 'Tổng quan dự án · ' : h === 'conclusion' ? 'Tổng kết · ' : 'Bài ' + h.slice(8) + ' · ') + D.name + ' · Portfolio';
+            sec ? $('#about-sec').scrollIntoView() : scrollTo({ top: 0, behavior: 'instant' }); closeMenus()
+        }
+        addEventListener('hashchange', route); route();
+        db.onclick = e => { e.stopPropagation(); const o = dd.classList.toggle('open'); db.setAttribute('aria-expanded', o) };
+        bg.onclick = e => { e.stopPropagation(); const o = nav.classList.toggle('open'); bg.setAttribute('aria-expanded', o) };
+        document.addEventListener('click', () => { dd.classList.remove('open'); db.setAttribute('aria-expanded', 'false') });
+        addEventListener('keydown', e => { if (e.key === 'Escape') closeMenus() });
+        $('#theme').onclick = () => { const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme:dark)').matches; r.dataset.theme = dark ? 'light' : 'dark' };
+
+        /* hiệu ứng xuất hiện khi cuộn */
+        const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .12 }) : null;
+        $$('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+
+        /* âm thanh: tự tổng hợp bằng Web Audio, không cần file ngoài */
+        let ac, mg, timer, playing = false;
+        function ctx() { if (!ac) { ac = new (window.AudioContext || window.webkitAudioContext)(); mg = ac.createGain(); mg.gain.value = .5; mg.connect(ac.destination) } if (ac.state === 'suspended') ac.resume(); return ac }
+        function tone(f, t, d, type, v) { const a = ctx(), o = a.createOscillator(), n = a.createGain(), s = a.currentTime + t; o.type = type; o.frequency.value = f; n.gain.setValueAtTime(0, s); n.gain.linearRampToValueAtTime(v, s + .02); n.gain.exponentialRampToValueAtTime(.001, s + d); o.connect(n); n.connect(mg); o.start(s); o.stop(s + d + .05) }
+        const CH = [[220, 261.63, 329.63], [174.61, 220, 261.63], [261.63, 329.63, 392], [196, 246.94, 293.66]]; let ci = 0;
+        function bar() { const c = CH[ci++ % 4]; tone(c[0] / 2, 0, 2.8, 'sine', .24);[0, 1, 2, 1, 2, 1, 0, 1].forEach((k, i) => tone(c[k] * 2, i * .4, .7, 'triangle', .09)) }
+        function setPlay(on) { playing = on; $('#disc').classList.toggle('on', on); $('#disc').setAttribute('aria-pressed', on); document.body.classList.toggle('playing', on); $('#snd').textContent = on ? '🔊' : '🔇'; clearInterval(timer); if (on) { bar(); timer = setInterval(bar, 3200) } }
+        $('#disc').onclick = () => setPlay(!playing); $('#snd').onclick = () => setPlay(!playing);
+
+        /* trứng phục sinh: gõ doremi hoặc chạm khóa Sol 3 lần */
+        const NT = [261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25];
+        function burst() { if (matchMedia('(prefers-reduced-motion:reduce)').matches) return; for (let i = 0; i < 16; i++) { const s = document.createElement('span'); s.className = 'fl'; s.textContent = '♪♫♩♬'[i % 4]; s.style.cssText = `left:${Math.random() * 96}vw;font-size:${20 + Math.random() * 26}px;animation-delay:${Math.random() * .6}s`; document.body.append(s); setTimeout(() => s.remove(), 3200) } }
+        function scale() { NT.forEach((f, i) => tone(f, i * .17, .6, 'triangle', .22)); burst() }
+        let buf = ''; addEventListener('keydown', e => { if (/input|textarea/i.test(e.target.tagName) || e.key.length !== 1) return; buf = (buf + e.key.toLowerCase()).slice(-6); if (buf === 'doremi') { buf = ''; scale() } });
+        let tp = 0, tt; $('#clef').onclick = () => { clearTimeout(tt); if (++tp >= 3) { tp = 0; scale() } else tt = setTimeout(() => tp = 0, 900) };
+    </script>
+</body>
+
+</html>
